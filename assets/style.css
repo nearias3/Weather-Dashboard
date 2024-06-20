@@ -17,22 +17,35 @@ body h1 {
 }
 
 form {
-    /* will add sizes and padding, formatting */
+    font-weight: bold;
+    margin-left: 5px;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 20px;
 }
 
 input {
-    /* will add formatting */
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-top: 10px;
+    flex: 1;
 }
 
 button {
     background-color: rgb(126, 80, 149);
     color: white;
+    width: 215px;
+    padding: 4px;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
     /* add additional formatting later */
 }
 
-#form-title {
-    /* add size and formatting later */
-}
 
 button:hover {
     background:  rgb(74, 1, 110);
