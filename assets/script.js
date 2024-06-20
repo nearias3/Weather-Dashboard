@@ -1,5 +1,13 @@
+let cityName = "Austin";
+let stateCode = "TX";
+let countryCode = "US";
+let lat;
+let lon;
+
+
+
 const apiKey = "8ad839b65264bae52bc1d8df55faaf48";
-const apiBaseUrl = "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
+const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
 const form = document.getElementById("city-form");
 const cityInput = document.getElementById("city-input");
 const currentWeather = document.getElementById("current-weather");
@@ -11,7 +19,7 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
     const city = cityInput.value.trim(); //asking for trimmed value from the input box
     if (city) {
-        getCityCoordinates(city); // fetch the city coordinates
+        fetchWeather(city); // fetch the city coordinates
         addToSearchHistory(city); //need code to add the search to the search history
         cityInput.value = ""; // clearing the input value after hitting submit
     }
@@ -25,12 +33,17 @@ searchHistory.addEventListener("click", (event) => {
  
 });
 
-function getCityCoordinates(city) {
-  const url = apiBaseUrl;
-  fetch(url);
-  // what if a city with no values is given
-}
+function fetchWeather(query, city, state, country) {
+    cityName = city;
+    stateCode = state;
+    countryCode = country;
+    fetch(query)
+        .then(function (response) {
+            console.log(response);
+            return response.json();
+        })
 
+}
 
 function addToSearchHistory(city) {
     // add to local storage
