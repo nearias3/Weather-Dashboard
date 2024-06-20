@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+body h1 {
+    background-color: rgb(74, 1, 110);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    /* figure out how to make the background color be ombre */
+}
+
+form {
+    /* will add sizes and padding, formatting */
+}
+
+input {
+    /* will add formatting */
+}
+
+button {
+    background-color: rgb(126, 80, 149);
+    color: white;
+    /* add additional formatting later */
+}
+
+#form-title {
+    /* add size and formatting later */
+}
+
+button:hover {
+    background:  rgb(74, 1, 110);
+}
+
+/* additional formatting for the current weather, 5-day forecast and search history cities to be added later */
