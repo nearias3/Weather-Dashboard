@@ -1,5 +1,5 @@
 const apiKey = "8ad839b65264bae52bc1d8df55faaf48";
-const apiBaseUrl: "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
+const apiBaseUrl = "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
 const form = document.getElementById("city-form");
 const cityInput = document.getElementById("city-input");
 const currentWeather = document.getElementById("current-weather");
@@ -17,19 +17,28 @@ form.addEventListener("submit", (event) => {
     }
 });
 
+searchHistory.addEventListener("click", (event) => {
+    if (event.target.tagName === "BUTTON") {
+        const city = event.target.textContent;
+        getCityCoordinates(city);
+    }
+ 
+});
+
+function getCityCoordinates(city) {
+  const url = apiBaseUrl;
+  fetch(url);
+  // what if a city with no values is given
+}
 
 
+function addToSearchHistory(city) {
+    // add to local storage
+}
 
-// add event listener for the search history ??
+function updateSearchHistory() {
+    //add to local storage
+}
 
-// what if a city with no values is given
 
-// create function for fetching a city's coordinates from the api
-
-// create function for fetching the weather data
-
-// display the forecast
-
-// add that city to the search history
-
-// search history is stored and loaded when the app is loaded
+document.addEventListener("DOMContentLoaded", updateSearchHistory);
