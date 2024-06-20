@@ -27,7 +27,7 @@ searchHistory.addEventListener("click", (event) => {
 });
 
 function fetchWeather(city) {
-    const queryURL = "http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}";
+    const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
     fetch(queryURL)
         .then(function (response) {
             console.log(response);
@@ -43,7 +43,6 @@ function fetchWeather(city) {
             }
         })
         .catch(error => console.error("Error fetching city coordinates:", error));
-    // Something is off with this code, queryURL seems to be wrong, city not found error
 }
 
 function displayCurrentWeather(data, city) {
@@ -59,6 +58,23 @@ function displayCurrentWeather(data, city) {
             <p>Humidity: ${main.humidity}%</p>
     </div>
     `;
+}
+
+function displayForecast(data) {
+    forecast.innerHTML = '<h2>5-Day Forecast:</h2>' ;
+    const forecastList = data.list.filter(item => item.dt_text.includes("12:00:00"));
+    forecastList.forEach(item => {
+        const {main, weather, wind, dt_text} = item;
+        forecast.innerHTML += 
+        `<div class="card">
+                <p>${new Date(dt_txt).toLocaleDateString()}</p>
+                <img src="https://openweathermap.org/img/wn/${weather[0].icon}.png" alt="${weather[0].description}">
+                <p>Temperature: ${main.temp}°C</p>
+                <p>Wind Speed: ${wind.speed} m/s</p>
+                <p>Humidity: ${main.humidity}%</p>
+            </div>
+        `;
+    });
 }
 
 function addToSearchHistory(city) {
