@@ -60,7 +60,7 @@ function displayCurrentWeather(data, city) {
     const currentWeather = data.list[0];
     const {main, weather, wind, dt_txt} = currentWeather;
     currentWeatherEl.innerHTML = `
-    <div class="card">
+    <div class="current-weather-card">
          <h2>${city}</h2>
             <p>${new Date(dt_txt).toLocaleDateString()}</p>
             <img src="https://openweathermap.org/img/wn/${weather[0].icon}.png" alt="${weather[0].description}">
@@ -73,11 +73,11 @@ function displayCurrentWeather(data, city) {
 
 function displayForecast(data) {
     forecastEl.innerHTML = '<h2>5-Day Forecast:</h2>' ;
-    const forecastList = data.list.filter(item => item.dt_text.includes("12:00:00"));
+    const forecastList = data.list.filter(item => item.dt_txt.includes("12:00:00"));
     forecastList.forEach(item => {
-        const {main, weather, wind, dt_text} = item;
+        const { main, weather, wind, dt_txt } = item;
         forecastEl.innerHTML += 
-        `<div class="card">
+        `<div class="forecast-card">
                 <p>${new Date(dt_txt).toLocaleDateString()}</p>
                 <img src="https://openweathermap.org/img/wn/${weather[0].icon}.png" alt="${weather[0].description}">
                 <p>Temperature: ${main.temp}°C</p>
