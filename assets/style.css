@@ -43,12 +43,12 @@ button {
     cursor: pointer;
     border-radius: 4px;
     margin-top: 10px;
-    /* add additional formatting later */
 }
 
 
 button:hover {
     background:  rgb(74, 1, 110);
 }
+
 
 /* additional formatting for the current weather, 5-day forecast and search history cities to be added later */
