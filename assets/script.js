@@ -7,14 +7,17 @@ const cityInput = document.getElementById("city-input");
 const currentWeatherEl = document.getElementById("current-weather");
 const forecastEl = document.getElementById("forecast");
 const searchHistoryEl = document.getElementById("search-history");
+const errorModal = document.getElementById("errorModal");
+const modalMessage = document.getElementById("modal-message");
+const closeBtn = document.getElementsByClassName("close")[0];
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const city = cityInput.value.trim(); //asking for trimmed value from the input box
+    const city = cityInput.value.trim(); 
     if (city) {
-        fetchWeather(city); // fetch the city coordinates
-        addToSearchHistory(city); //need code to add the search to the search history
-        cityInput.value = ""; // clearing the input value after hitting submit
+        fetchWeather(city);
+        addToSearchHistory(city);
+        cityInput.value = ""; 
     }
 });
 
@@ -39,10 +42,13 @@ function fetchWeather(city) {
                 lon = data.coord.lon;
                 getWeatherData(lat, lon, city);
             } else {
-                alert("City not found");
+                showModal("City not found");
             }
         })
-        .catch(error => console.error("Error fetching city coordinates:", error));
+        .catch(error => {
+            console.error("Error fetching city coordinates:", error);
+            showModal("Error fetching city coordinates");
+        });
 }
 
 function getWeatherData(lat, lon, city) {
@@ -53,7 +59,10 @@ function getWeatherData(lat, lon, city) {
             displayCurrentWeather(data, city);
             displayForecast(data);
         })
-        .catch(error => console.error("Error fetching weather data:", error));
+        .catch(error => {
+            console.error("Error fetching weather data:", error);
+            showModal("Error fetching weather data");
+        });
 }
 
 function displayCurrentWeather(data, city) {
@@ -89,12 +98,35 @@ function displayForecast(data) {
 }
 
 function addToSearchHistory(city) {
-    // add to local storage
+    let history = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    if (!history.includes(city)) {
+        history.push(city);
+        localStorage.setItem("searchHistory", JSON.stringify(history));
+        updateSearchHistory();
+    }
 }
 
 function updateSearchHistory() {
-    //add to local storage
+    const history = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    searchHistoryEl.innerHTML = "";
+    history.forEach(city => {
+        searchHistoryEl.innerHTML += `<button>${city}</button>`;
+    }); 
 }
 
+function showModal(message) {
+    modalMessage.textContent = message;
+    errorModal.style.display = "block";
+}
+
+closeBtn.addEventListener("click", () => {
+    errorModal.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+    if (event.target == errorModal) {
+        errorModal.style.display = "none";
+    }
+});
 
 document.addEventListener("DOMContentLoaded", updateSearchHistory);
