@@ -7,7 +7,7 @@ const forecast = document.getElementById("forecast");
 const searchHistory = document.getElementById("search-history");
 
 // add eventlistener for the city submitted into the form
-form.addEventListener("submit", (event)) => {
+form.addEventListener("submit", (event) => {
     event.preventDefault();
     const city = cityInput.value.trim(); //asking for trimmed value from the input box
     if (city) {
@@ -15,7 +15,9 @@ form.addEventListener("submit", (event)) => {
         addToSearchHistory(city); //need code to add the search to the search history
         cityInput.value = ""; // clearing the input value after hitting submit
     }
-}
+});
+
+
 
 
 // add event listener for the search history ??
