@@ -28,7 +28,7 @@ searchHistoryEl.addEventListener("click", (event) => {
 });
 
 function fetchWeather(city) {
-  const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  const queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
   fetch(queryURL)
     .then((response) => response.json())
     .then((data) => {
