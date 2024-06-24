@@ -6,32 +6,34 @@ body {
 }
 
 h1 {
-    background-color: rgb(74, 1, 110);
+    background: linear-gradient(to right, rgb(126, 80, 149), rgb(74, 1, 110));
     margin: 0;
-    padding: 0;
+    padding: 10px 0;
     text-align: center;
     color: white;
     font-size: 50px;
     font-weight: bold;
-    /* figure out how to make the background color be ombre */
 }
 
 .container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
 }
 
-.search-container {
+.left-panel, .right-panel {
     display: flex;
     flex-direction: column;
-    margin-right: 20px;
+    width: 100%
+    max-width: 600px;
+    margin: 10px 0;
 }
 
 form {
+    display: flex;
+    flex-direction: column;
     font-weight: bold;
-    margin-left: 5px;
-    margin-top: 20px;
-    padding: 10px;
     font-size: 20px;
 }
 
@@ -41,16 +43,14 @@ input {
     border: 1px solid black;
     border-radius: 4px;
     margin-top: 10px;
-    flex: 1;
 }
 
 button {
     background-color: rgb(126, 80, 149);
     color: white;
-    width: 215px;
-    padding: 4px;
+    padding: 8px;
     border: none;
-    font-size: 12px;
+    font-size: 15px;
     cursor: pointer;
     border-radius: 4px;
     margin-top: 10px;
@@ -58,6 +58,46 @@ button {
 
 button:hover {
     background: rgb(74, 1, 110);
+}
+
+#search-history {
+    margin-top: 10px;
+}
+
+.current-weather-card {
+    text-align: center;
+    border: 3px solid rgb(126, 80, 149);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    justify-content: left;
+    text-align: left;
+}
+
+#current-weather {
+    padding: 20px;
+    max-width: 100%;
+}
+
+
+.forecast-card {
+    background-color:rgb(126, 80, 149);
+    color: white;
+    font: Arial;
+    font-weight: bold;
+    justify-content: left;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 200px;
+    text-align: left;
+}
+
+#forecast {
+    display: flex;
+    flex-wrap: block;
+    justify-content: left;
 }
 
 .modal {
@@ -95,43 +135,5 @@ button:hover {
 .close:focus {
     color: black;
     text-decoration: none;
-}
-
-.current-weather-card {
-    text-align: center;
-    flex-grow: 1;
-    border: 3px solid rgb(126, 80, 149);
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px;
-    max-width: fit-content;
-    justify-content: left;
-
-}
-
-#current-weather {
-    display: block;
-    flex-wrap: wrap;
-}
-
-#forecast {
-    display: inline-block;
-    flex-wrap: wrap;
-}
-
-.forecast-card {
-    display: flex;
-    flex-wrap: wrap;
-    background-color:rgb(126, 80, 149);
-    color: white;
-    font: Arial;
-    font-weight: bold;
-    justify-content: left;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px;
-    width: 200px;
-    text-align: left;
 }
 
