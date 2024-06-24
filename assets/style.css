@@ -45,30 +45,43 @@ button {
     margin-top: 10px;
 }
 
-
 button:hover {
-    background:  rgb(74, 1, 110);
+    background: rgb(74, 1, 110);
 }
 
 .modal {
     display: none;
     position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(100, 2, 105);
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
-    background-color: white;
-    margin: 15% auto;
-    padding: 1px solid #8888;
+    background-color: #fefefe;
+    border: 1px solid #888;
+    padding: 20px;
     width: 80%;
+    max-width: 200px;
+    position: relative;
 }
 
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-
-
-/* additional formatting for the current weather, 5-day forecast and search history cities to be added later */
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
